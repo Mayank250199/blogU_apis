@@ -111,12 +111,6 @@ router.post('/profile',upload.single('upload_file'), function(req, res) {
             res.status(200).send(user);
         });
     });
-    router.put('/:id',VerifyToken, function (req, res) {
-        User_Detail.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {
-            if (err) return res.status(500).send("There was a problem updating the user.");
-            res.status(200).send(user);
-        });
-    });
 
     router.put('/follower/:id',VerifyToken, function (req, res) {
 
@@ -160,6 +154,8 @@ router.post('/profile',upload.single('upload_file'), function(req, res) {
     router.put('/notification/:id',VerifyToken, function (req, res) {
 
       var user_id = req.body.user_id;
+      var seen = req.body.seen;
+      var description = req.body.description;
 
     if( !user_id ){
         return res.send({
@@ -169,7 +165,7 @@ router.post('/profile',upload.single('upload_file'), function(req, res) {
       }
 
       User_Detail.findByIdAndUpdate(req.params.id,
-         {$push: {notification: { user_id: user_id , seen:seen} } },
+         {$push: {notification: { user_id: user_id , seen:seen , description:description} } },
          {new: true}, function (err, user) {
            if (err) return res.status(500).send("There was a problem updating the user.");
            res.status(200).send(user);

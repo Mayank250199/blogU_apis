@@ -28,7 +28,7 @@ var UserDetailController = require(__root + 'user/controller/UserDetailControlle
 app.use('/api/userdetail', UserDetailController);
 
 var BlogController = require(__root + 'user/controller/blogController');
-app.use('/api/Blog', BlogController);
+app.use('/api/blog', BlogController);
 
 
 var port = process.env.PORT || 4000;

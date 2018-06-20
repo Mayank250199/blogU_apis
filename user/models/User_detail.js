@@ -34,6 +34,10 @@ var User_DetailSchema = new mongoose.Schema({
       type: String,
       default: ''
     },
+    description:{
+      type: String,
+      default: ''
+    },
     seen:{
       type:Boolean,
       default: false

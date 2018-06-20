@@ -23,7 +23,7 @@ var upload = multer({ storage : storage});
 
 
 /** API for single file upload */
-router.post('/',upload.single('upload_file'), function(req, res) {
+router.post('/create',upload.single('upload_file'), function(req, res) {
 
   if(!req.file){
       return res.send({
@@ -57,14 +57,14 @@ router.post('/',upload.single('upload_file'), function(req, res) {
     });
   }
 
-      const newCollege = new Blog();
-      newCollege.title = title;
-      newCollege.category = category;
-      newCollege.body = body;
-      newCollege.image.push({pics:image});
-      newCollege.author.user_id = user_id;
+      const newblog = new Blog();
+      newblog.title = title;
+      newblog.category = category;
+      newblog.body = body;
+      newblog.image.push({pics:image});
+      newblog.author.user_id = user_id;
 
-    newCollege.save((err,user) =>{
+    newblog.save((err,user) =>{
       if(err){
         return res.send({
         success:false,
@@ -97,7 +97,7 @@ router.post('/',upload.single('upload_file'), function(req, res) {
 
     router.put('/:id',VerifyToken, function (req, res) {
         Blog.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, blog) {
-            if (err) return res.status(500).send("There was a problem updating the college.");
+            if (err) return res.status(500).send("There was a problem updating the blog.");
             res.status(200).send(blog);
         });
      });
@@ -116,9 +116,9 @@ router.post('/',upload.single('upload_file'), function(req, res) {
        var user_id = req.body.user_id;
 
      Blog.findByIdAndUpdate(req.params.id,
-          {$push: {author: { user_id: user_id, body: body, image:image} } },
+          {$push: {answer: { user_id: user_id, body: body, image:image} } },
           {new: true}, function (err, answer) {
-            if (err) return res.status(500).send("There was a problem updating the college.");
+            if (err) return res.status(500).send("There was a problem updating the blog.");
             res.status(200).send({answer_id: answer._id,blog:req.params.id});
         });
      });
