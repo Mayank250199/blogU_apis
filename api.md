@@ -1,8 +1,8 @@
 ## API structure
 
-xxxxxxx : stand for String
+###   xxxxxxx : stand for String
 
-Token is given as [x-access-token] in header in request having  (**) after given request
+###   Token is given as [x-access-token] in header in request having  (**) after given request
 
 ### api/users/create         :POST
 
