@@ -4,7 +4,7 @@
 
 ###   Token is given as [x-access-token] in header in request having  (**) after given request
 
-### api/users/create         :POST
+### api/user/create         :POST
 
    firstname : xxxxxxx
    lastname  : xxxxxxx
@@ -12,9 +12,9 @@
    username  : xxxxxxx
    password  : xxxxxxx
 
-### api/users        :GET  (ALL user)                                    **
+### api/user        :GET  (ALL user)                                    **
 
-### api/users/:id        :GET/PUT/DELETE  (To get/update/delete user)    **
+### api/user/:id        :GET/PUT/DELETE  (To get/update/delete user)    **
 
 ### api/auth/login     :POST  
 
