@@ -1,0 +1,99 @@
+.xo{
+	box-shadow: 0 0 .6px black;
+}
+.xcv{
+	font-size: 50px;
+	color: black;
+	padding-left: 10px;
+}
+a{
+  color:#b7b7b7;
+}
+a:hover{
+  color:black;
+}
+.lcorner{
+	padding-left: 80px;
+}
+
+.lcon2{
+	padding-left: 10px;
+	font-size: 22px;
+
+}
+
+#hi{
+	max-height: 80px;
+}
+
+::-webkit-scrollbar{width:2px;height:2px;}
+::-webkit-scrollbar-button{width:2px;height:2px;}
+
+div{
+  box-sizing:border-box;
+}
+
+
+
+.horizontal-scroll-wrapper{
+
+  display:block;
+  top:0;
+  left:0;
+  width:80px;
+  max-height:1100px;
+  margin:0;
+  background:white;
+  overflow-y:auto;
+  overflow-x:hidden;
+  transform:rotate(-90deg) translateY(-80px);
+  transform-origin:right top;
+}
+.horizontal-scroll-wrapper > div{
+  display:block;
+  padding:5px;
+  background:white;
+  transform:rotate(90deg);
+  transform-origin: right top;
+}
+
+.ink{
+	color: #b7b7b7;
+}
+.ink:hover{
+	color: black;
+}
+
+.rectangles{
+  top:100px;
+  padding:100px 0 0 0;
+}
+.rectangles > div{
+  width:140px;
+  height:60px;
+  margin:50px 10px;
+  padding:5px;
+  background:white;
+  transform:rotate(90deg) translateY(80px);
+  transform-origin: right top;
+}
+
+@media all and (max-width: 640px) {
+
+   .horizontal-scroll-wrapper{
+  width:80px;
+  max-height: 500px;
+  display:block;
+  top:0;
+  left:0;
+  width:80px;
+  max-height:1000px;
+  margin:0;
+  background:white;
+  overflow-y:auto;
+  overflow-x:hidden;
+  transform:rotate(-90deg) translateY(-80px);
+  transform-origin:right top;
+   }
+
+}
