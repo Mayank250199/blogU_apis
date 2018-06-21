@@ -41,7 +41,7 @@ class Navbar extends Component {
         </div>
       </li>
       <li >
-        <a class="nav-link" href="/">Add Question</a>
+        <Link to="/blog/create">Add Question</Link>
       </li>
        </ul>
       {this.props.currentUser.isAuthenticated ? (

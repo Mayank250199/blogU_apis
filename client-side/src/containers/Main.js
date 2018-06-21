@@ -6,6 +6,7 @@ import AuthForm from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
 import withAuth from "../hocs/withAuth";
+import BlogForm from "../containers/BlogForm.js"
 
 
 const Main = props => {
@@ -50,6 +51,10 @@ const Main = props => {
               />
             );
           }}
+        />
+        <Route
+          path="/blog/create"
+          component={withAuth(BlogForm)}
         />
       </Switch>
     </div>
