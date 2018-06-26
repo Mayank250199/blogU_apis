@@ -32,9 +32,11 @@ router.post('/create',upload.single('upload_file'), function(req, res) {
     });
   }
 
+  console.log(req.file)
+
   var title = req.body.title;
   var category = req.body.category;
-  var image = req.file.path;
+  var image = '/uploads/Blog/'+req.file.filename;
   var body = req.body.body;
   var user_id = req.body.user_id;
 
