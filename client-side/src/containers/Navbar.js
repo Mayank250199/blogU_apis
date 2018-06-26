@@ -47,7 +47,7 @@ class Navbar extends Component {
       {this.props.currentUser.isAuthenticated ? (
                
             <ul className="nav navbar-nav navbar-right" >
-              <li>Hii User
+              <li>hii
               </li>
               <li class="nav-item lcon2">
                 <a onClick={this.logout}>Log out</a>

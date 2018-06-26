@@ -7,8 +7,8 @@ const Homepage = ({ currentUser }) => {
     <div>
       <BlogTimeline/>
       
-        username={currentUser.user.username}
-      />
+        {currentUser.user.username}
+     
     </div>
   );
 };

@@ -24,7 +24,7 @@ export const removeBlog = (user_id, blog_id) => {
 
 export const fetchBlogs = () => {
   return dispatch => {
-    return apiCall("GET", "/api/blog")
+    return apiCall("GET", "/api/blog/")
       .then(res => {
         dispatch(loadBlogs(res));
       })

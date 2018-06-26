@@ -9,16 +9,23 @@ class BlogForm extends Component {
       title: "",
       category: "",
       body: "",
-      image:""
-
-
+      image:"",
     };
   }
 
   handleNewBlog = event => {
     event.preventDefault();
-    this.props.postNewBlog(this.state.title , this.state.category , this.state.body , this.state.file );
-    this.setState({ title: "" },{ category: "" },{ body: "" },{image:""});
+    this.props.postNewBlog(
+      this.state.title ,
+      this.state.category ,
+      this.state.body ,
+      this.state.image 
+    );
+    this.setState(
+      { title: "" },
+      { category: "" },
+      { body: "" },
+      {image:""});
     this.props.history.push("/");
   };
 
