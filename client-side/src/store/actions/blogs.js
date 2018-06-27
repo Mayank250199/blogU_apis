@@ -36,8 +36,13 @@ export const fetchBlogs = () => {
 
 export const postNewBlog = data => (dispatch, getState) => {
   let { currentUser } = getState();
+  
   const user_id = currentUser.user.id;
-  return apiCall("post", "/api/blog/create", { data })
+  const title = data.title;
+  const category = data.category;
+  const upload_file = data.upload_file;
+  const body = data.body;
+  return apiCall("post", "/api/blog/create", {upload_file,title,category,user_id,body})
     .then(res => {})
     .catch(err => addError(err.message));
 };
