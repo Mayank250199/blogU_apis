@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchBlogs, removeBlog } from "../store/actions/blogs";
-import { fetchUserId } from "../store/actions/user";
+import { fetchUserId } from "../store/actions/users";
 import BlogItem from "../components/BlogItem";
 
 
@@ -54,7 +54,7 @@ function mapStateToProps(state) {
   return {
     blogs: state.blogs,
     data: state.data,
-    currentUser: state.currentUser.user.id
+    currentUser: state.currentUser.userid
   };
 }
 

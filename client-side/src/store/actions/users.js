@@ -19,3 +19,19 @@ export const loadUsers = users => ({
         });
     };
   };
+
+  export const fetchUserProfile =text=> (dispatch,getState) => {
+    let { currentUser } = getState();
+    const user_id = currentUser.user.id;
+    return dispatch => {
+      return apiCall("GET", `/api/user/${user_id}`)
+        .then(res => {
+          dispatch(loadUsers());
+        })
+        .catch(err => {
+          dispatch(addError());
+        });
+    };
+  };
+  
+ 
