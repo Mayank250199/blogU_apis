@@ -7,14 +7,15 @@ export const loadUsers = users => ({
   users
 });
 
-
   export const fetchUserId = (user_id) => {
     return dispatch => {
       return apiCall("GET", `/api/user/${user_id}`)
-        .then(res => {
-          dispatch(loadUsers(res));
+        .then(res =>
+             res.json().then(data => {
+               console.log(data)
+          dispatch(loadUsers(data));
         })
-        .catch(err => {
+).catch(err => {
           dispatch(addError());
         });
     };
@@ -33,5 +34,3 @@ export const loadUsers = users => ({
         });
     };
   };
-  
- 
