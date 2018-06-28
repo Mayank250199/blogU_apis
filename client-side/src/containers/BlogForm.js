@@ -18,6 +18,7 @@ class BlogForm extends Component {
     event.preventDefault();
     this.state.upload_file = (this.state.upload_file).replace("C:\\fakepath\\", "/uploads/Blog/");
     this.props.postNewBlog(this.state);
+    this.setState=( {title: ""}, {category: ""},{body: ""},{upload_file:""},{ user_id:""});
     this.props.history.push("/");
   };
 
