@@ -8,16 +8,16 @@ import BlogItem from "../components/BlogItem";
 class BlogList extends Component {
   componentDidMount() {
     this.props.fetchBlogs();
-    
+
       }
-      
- 
+
+
   render() {
-    
+
     const { blogs, removeBlog, currentUser,user} = this.props;
-   
+
       let blogList = blogs.map(b => (
-       
+
       <BlogItem
        user = {this.props.fetchUserId(b.author.user_id)}
         key={b._id}
@@ -26,23 +26,23 @@ class BlogList extends Component {
         category={b.category}
         body={b.body}
         image={b.image.pics}
-       
-        
-        
+
+
+
         removeBlog={removeBlog.bind(this, b.author.user_id, b._id)}
         isCorrectUser={currentUser === b.author.user_id}
       />
     ));
 
-    
+
     return (
       <div className="row col-sm-8">
         <div className="offset-1 col-sm-10">
           <ul className="list-group" >
-       {console.log(user)}
-          
+       {console.log()}
+
             {blogList}
-            
+
           </ul>
         </div>
       </div>
