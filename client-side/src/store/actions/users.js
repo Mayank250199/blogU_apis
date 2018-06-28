@@ -19,3 +19,22 @@ export const loadUsers = users => ({
         });
     };
   };
+<<<<<<< HEAD:client-side/src/store/actions/user.js
+=======
+
+  export const fetchUserProfile =text=> (dispatch,getState) => {
+    let { currentUser } = getState();
+    const user_id = currentUser.user.id;
+    return dispatch => {
+      return apiCall("GET", `/api/user/${user_id}`)
+        .then(res => {
+          dispatch(loadUsers());
+        })
+        .catch(err => {
+          dispatch(addError());
+        });
+    };
+  };
+  
+ 
+>>>>>>> origin/master:client-side/src/store/actions/users.js

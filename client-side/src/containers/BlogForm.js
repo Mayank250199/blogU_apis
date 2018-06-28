@@ -9,23 +9,15 @@ class BlogForm extends Component {
       title: "",
       category: "",
       body: "",
-      image:"",
+      upload_file:"",
+      user_id:""
     };
   }
 
   handleNewBlog = event => {
     event.preventDefault();
-    this.props.postNewBlog(
-      this.state.title ,
-      this.state.category ,
-      this.state.body ,
-      this.state.image 
-    );
-    this.setState(
-      { title: "" },
-      { category: "" },
-      { body: "" },
-      {image:""});
+    this.state.upload_file = (this.state.upload_file).replace("C:\\fakepath\\", "/uploads/Blog/");
+    this.props.postNewBlog(this.state);
     this.props.history.push("/");
   };
 
@@ -61,8 +53,9 @@ class BlogForm extends Component {
         <br/>
         <input
           type="file"
-          value={this.state.image}
-          onChange={e => this.setState({ image: e.target.value })}
+          value={this.state.upload_file}
+          
+          onChange={e => this.setState({ upload_file: e.target.value })}
         />
         <br/>
         <button type="submit" className="btn btn-success form-control">

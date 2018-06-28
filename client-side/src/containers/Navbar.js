@@ -5,11 +5,14 @@ import { logout } from "../store/actions/auth";
 import "../style/navbar.css"
 
 class Navbar extends Component {
+  
   logout = e => {
     e.preventDefault();
     this.props.logout();
   };
+  
 	render(){
+    
 		return(
 			 <div>
               <nav class="navbar navbar-expand-lg navbar-light xo">
@@ -40,24 +43,31 @@ class Navbar extends Component {
           
         </div>
       </li>
-      <li >
+      <li class="nav-item lcon2">
         <Link to="/blog/create">Add Question</Link>
       </li>
        </ul>
       {this.props.currentUser.isAuthenticated ? (
                
-            <ul className="nav navbar-nav navbar-right" >
-              <li>hii
+            <ul className="nav navbar-nav " >
+              <li><Link to="/profile"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxHYqyZIBTGvqb-g6Y5JHrBJVoSEYJmGCok_EaQbIfep4ytN0-"
+          alt=""
+          width="50"
+          height="50"
+          className="img-thumbnail"
+        /></Link>
               </li>
-              <li class="nav-item lcon2">
+              <li class="nav-item lcon2 ">
                 <a onClick={this.logout}>Log out</a>
               </li>
             </ul>
           ) : (
-            <ul className="nav navbar-nav navbar-right">
+            <ul className="nav navbar-nav ">
               <li class="nav-item lcon2">
-                <Link to="/signup">Sign up</Link>
+                <Link to="/signup">Sign up </Link>
               </li>
+              <li className="nav-item lcon2">/</li>
               <li class="nav-item lcon2">
                 <Link to="/signin">Log in</Link>
               </li>
