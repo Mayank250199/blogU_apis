@@ -19,8 +19,6 @@ export const loadUsers = users => ({
         });
     };
   };
-<<<<<<< HEAD:client-side/src/store/actions/user.js
-=======
 
   export const fetchUserProfile =text=> (dispatch,getState) => {
     let { currentUser } = getState();
@@ -35,6 +33,3 @@ export const loadUsers = users => ({
         });
     };
   };
-  
- 
->>>>>>> origin/master:client-side/src/store/actions/users.js
