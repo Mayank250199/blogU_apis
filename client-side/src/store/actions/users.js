@@ -10,11 +10,12 @@ export const loadUsers = users => ({
   export const fetchUserId = (user_id) => {
     return dispatch => {
       return apiCall("GET", `/api/user/${user_id}`)
-        .then(res =>{
-             let res1 = res.json()
-          dispatch(loadUsers(res1));
+        .then(res =>
+             res.json().then(data => {
+               console.log(data)
+          dispatch(loadUsers(data));
         })
-        .catch(err => {
+).catch(err => {
           dispatch(addError());
         });
     };

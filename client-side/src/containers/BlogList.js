@@ -8,13 +8,13 @@ import BlogItem from "../components/BlogItem";
 class BlogList extends Component {
   componentDidMount() {
     this.props.fetchBlogs();
-
+    this.props.fetchUserId("5b2b765fb96cf03f98ae663f")
       }
 
 
   render() {
 
-    const { blogs, removeBlog, currentUser,user} = this.props;
+    const { blogs, removeBlog, currentUser, user} = this.props;
 
       let blogList = blogs.map(b => (
 
@@ -32,6 +32,7 @@ class BlogList extends Component {
         removeBlog={removeBlog.bind(this, b.author.user_id, b._id)}
         isCorrectUser={currentUser === b.author.user_id}
       />
+
     ));
 
 
@@ -39,7 +40,6 @@ class BlogList extends Component {
       <div className="row col-sm-8">
         <div className="offset-1 col-sm-10">
           <ul className="list-group" >
-       {console.log()}
 
             {blogList}
 
