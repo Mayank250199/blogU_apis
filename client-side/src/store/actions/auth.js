@@ -26,7 +26,7 @@ export function authUser(type, userData) {
     // wrap our thunk in a promise so we can wait for the API call
     return new Promise((resolve, reject) => {
 
-      if(type == "signin"){
+      if(type === "signin"){
         console.log("signin");
          return apiCall("post", `/api/auth/login`, userData)
         .then(({ token, ...user }) => {
@@ -42,7 +42,7 @@ export function authUser(type, userData) {
         });
       }
       
-      if(type == "signup"){
+      if(type === "signup"){
         console.log("signup");
         return apiCall("post", `/api/user/create`, userData)
         .then(({ token, ...user }) => {

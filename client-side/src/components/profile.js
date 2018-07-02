@@ -1,28 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchUserProfile } from "../store/actions/users";
+import { fetchUserId } from "../store/actions/users";
 import ProfileMain from "./ProfileMain.js";
 
 class profile extends Component {
-    componentDidMount() {
-      
-        
-        this.props.fetchUserProfile();
-                
-          }
-   
+  
 render(){
-    const {users} = this.props;
-    console.log(users);
+  const {currentUser } = this.props;
+    console.log(currentUser);
+    
+   var hii = this.props.fetchUserId(currentUser);
+         
+   
 
    return (
+     
     <div>
-      <ProfileMain
-       name = {users.name}
-        username={users.username}
-        email={users.email}
-      />
      
         
      
@@ -34,8 +28,8 @@ render(){
 function mapStateToProps(state) {
     return {
       currentUser: state.currentUser.user.id,
-      users: state.users
+      
     };
   }
 
-export default connect(mapStateToProps,{fetchUserProfile})(profile);
+export default connect(mapStateToProps,{fetchUserId})(profile);

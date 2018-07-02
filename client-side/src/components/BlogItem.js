@@ -1,7 +1,7 @@
 import React from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import url from "../fileserver"
+import renderHTML from 'react-render-html';
 
 
 
@@ -20,14 +20,7 @@ const BlogItem = ({
   
   <div>
     <li className="list-group-item">
-      <img
-        
-       src= {`http://localhost:4000/${image}`}
-        alt={username}
-        height="100"
-        width="100"
-        className="timeline-image"
-      />
+     
       
       <div className="blog-area">
         <Link to="/">@{username} &nbsp;</Link>
@@ -41,7 +34,7 @@ const BlogItem = ({
         {console.log(user)}
         <p>{user.name}</p>
         <p>{category}</p>
-        <p>{body}</p>
+        <p>{renderHTML(body)}</p>
         {isCorrectUser && (
           <a className="btn btn-danger" onClick={removeMessage}>
             Delete

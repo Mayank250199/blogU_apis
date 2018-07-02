@@ -23,27 +23,24 @@ var upload = multer({ storage : storage});
 
 
 /** API for single file upload */
-router.post('/create',upload.single('upload_file'), function(req, res) {
-
-  if(!req.file){
-      return res.send({
-      success :false,
-       message:'Error:upload_file can\'t be Blank'
-    });
-  }
-
-  console.log(req.file)
+router.post('/create',function(req, res) {
 
   var title = req.body.title;
-  var category = req.body.category;
-  var image = '/uploads/Blog/'+req.file.filename;
   var body = req.body.body;
+  var category = req.body.category;
   var user_id = req.body.user_id;
-
+  
   if( !title){
     return res.send({
       success :false,
        message:'Error:title can\'t be Blank'
+    });
+  }
+ 
+  if ( !body ){
+    return res.send({
+      success :false,
+       message:'Error:body can\'t be Blank'
     });
   }
   if ( !category ){
@@ -52,19 +49,19 @@ router.post('/create',upload.single('upload_file'), function(req, res) {
        message:'Error:category can\'t be Blank'
     });
   }
-  if ( !body ){
+  
+  if( !user_id){
     return res.send({
       success :false,
-       message:'Error:body can\'t be Blank'
+       message:'Error:user can\'t be Blank'
     });
   }
-
       const newblog = new Blog();
       newblog.title = title;
-      newblog.category = category;
       newblog.body = body;
-      newblog.image.push({pics:image});
+      newblog.category = category;
       newblog.author.user_id = user_id;
+
 
     newblog.save((err,user) =>{
       if(err){

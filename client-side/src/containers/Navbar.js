@@ -15,8 +15,9 @@ class Navbar extends Component {
     
 		return(
 			 <div>
-              <nav class="navbar navbar-expand-lg navbar-light xo">
-    <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light xo">
+      <div class="container">
+   
   <a class="xcv" href="/" >Qsien</a>
    <form class="form-inline my-2 my-lg-0 lcorner">
       <input class="form-control " type="search" placeholder="Search" aria-label="Search" />
@@ -73,18 +74,10 @@ class Navbar extends Component {
               </li>
             </ul>
           )}
-     
-   
-   
-  </div>
-
+     </div>
+ 
 </div>
 </nav>
-
- 
-
-
-   
  <div class="container sticky-top" id="hi">
  <div class= "horizontal-scroll-wrapper  rectangles">
   <div><a href="#home" class="ink">Education</a> </div>

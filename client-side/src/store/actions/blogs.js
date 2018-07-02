@@ -1,6 +1,7 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./errors";
 import { LOAD_BLOGS, REMOVE_BLOG } from "../actionTypes";
+import axios from "axios";
 
 export const loadBlogs = blogs => ({
   type: LOAD_BLOGS,
@@ -34,18 +35,12 @@ export const fetchBlogs = () => {
   };
 };
 
-export const postNewBlog = data => (dispatch, getState) => {
+export const postNewBlog = text => (dispatch, getState) => {
   let { currentUser } = getState();
-  
-  
-  const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-  let fd = new FormData();
-  fd.append('upload_file',data.upload_file);
-  fd.append('title',data.title);
-  fd.append('category',data.category);
-  fd.append('body',data.body);
-  fd.append('user_id',currentUser.user.id);
-  return apiCall("post", "/api/blog/create", fd)
+  const user_id = currentUser.user.id;
+  const title = text.title;
+  const body = text.body;
+  const category = text.category;
+  return apiCall("post", "/api/blog/create",{title,body,category,user_id} )
     .then(res => {})
-    .catch(err => addError(err.message));
-};
+    .catch(err => addError(err.message))};

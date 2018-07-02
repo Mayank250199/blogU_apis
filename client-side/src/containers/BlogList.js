@@ -8,7 +8,7 @@ import BlogItem from "../components/BlogItem";
 class BlogList extends Component {
   componentDidMount() {
     this.props.fetchBlogs();
-    this.props.fetchUserId("5b2b765fb96cf03f98ae663f")
+   
       }
 
 
