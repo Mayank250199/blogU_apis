@@ -8,6 +8,8 @@ import { removeError } from "../store/actions/errors";
 import withAuth from "../hocs/withAuth";
 import BlogForm from "../containers/BlogForm.js";
 import profile from "../components/profile"
+import ShowBlog from "./ShowBlog";
+
 
 
 const Main = props => {
@@ -19,6 +21,11 @@ const Main = props => {
           exact
           path="/"
           render={props => <Homepage currentUser={currentUser} {...props} />}
+        />
+        <Route
+          exact
+          path="/blog/:id"
+          render={props => <ShowBlog currentUser={currentUser} {...props} />}
         />
         <Route
           exact

@@ -85,6 +85,13 @@ router.post('/create',function(req, res) {
             res.status(200).send(blogs);
         });
     });
+    // RETURNS  THE blog by id IN THE DATABASE
+    router.get('/:id',function (req, res) {
+        Blog.findById(req.params.id, function (err, blogs) {
+            if (err) return res.status(500).send("There was a problem finding the users.");
+            res.status(200).send(blogs);
+        });
+    });
 
     // DELETES A USER FROM THE DATABASE
     router.delete('/:id', function (req, res) {

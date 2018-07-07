@@ -15,12 +15,12 @@ class BlogList extends Component {
   render() {
 
     const { blogs, removeBlog, currentUser, user} = this.props;
-
+    
       let blogList = blogs.map(b => (
-
+      
       <BlogItem
-       user = {this.props.fetchUserId(b.author.user_id)}
-        key={b._id}
+
+        _id={b._id}
         date={b.author.created}
         title={b.title}
         category={b.category}
@@ -32,7 +32,7 @@ class BlogList extends Component {
         removeBlog={removeBlog.bind(this, b.author.user_id, b._id)}
         isCorrectUser={currentUser === b.author.user_id}
       />
-
+       
     ));
 
 
