@@ -25,7 +25,7 @@ class BlogList extends Component {
         title={b.title}
         category={b.category}
         body={b.body}
-        image={b.image.pics}
+        answer={b.answer[0].body}
 
 
 
@@ -40,7 +40,7 @@ class BlogList extends Component {
       <div className="row col-sm-8">
         <div className="offset-1 col-sm-10">
           <ul className="list-group" >
-
+           
             {blogList}
 
           </ul>

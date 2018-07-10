@@ -1,7 +1,7 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./errors";
 import { LOAD_BLOGS, REMOVE_BLOG } from "../actionTypes";
-import axios from "axios";
+
 
 export const loadBlogs = blogs => ({
   type: LOAD_BLOGS,
@@ -55,3 +55,13 @@ export const postNewBlog = text => (dispatch, getState) => {
   return apiCall("post", "/api/blog/create",{title,body,category,user_id} )
     .then(res => {})
     .catch(err => addError(err.message))};
+
+    export const postNewComment = text => (dispatch, getState) => {
+      let { currentUser } = getState();
+      const user_id = currentUser.user.id;
+      const id = text.id;
+      const body = text.body;
+      
+      return apiCall("put", `/api/blog/answer/${id}`,{body,user_id} )
+        .then(res => {})
+        .catch(err => addError(err.message))};

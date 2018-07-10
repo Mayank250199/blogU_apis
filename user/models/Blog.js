@@ -42,12 +42,6 @@ var BlogSchema = new mongoose.Schema({
       type: String,
       default: ''
     },
-    image: [{
-      pics:{
-        type: String,
-        default: ''
-      }
-    }],
     upvote:{
       type: Number,
       default: 0

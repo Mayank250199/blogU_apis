@@ -1,27 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {fetchBlogById} from "../store/actions/blogs";
-import Blog from "../components/Blog";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {postNewComment} from "../store/actions/blogs";
 import "../style/comment.css";
-import AnswerList from "../components/AnswerList";
 
 
 
-
-
-
-class ShowBlog extends Component {
-  componentDidMount() {
-     const id = this.props.match.params.id;
-     this.props.fetchBlogById(id);
-      }
-      
-   //answer
-   
-   constructor(props) {
+class CommentInput extends Component {
+    componentDidMount() {
+        const id = this.props.params.id;
+             }
+  constructor(props) {
     
     super(props);
     this.state = {
@@ -45,7 +35,7 @@ class ShowBlog extends Component {
     e.preventDefault();
     const post = {
       body: this.state.body,
-      id :  this.props.match.params.id
+      id :this.state.id
     };
     this.props.postNewComment(post);
     this.setState({
@@ -55,47 +45,15 @@ class ShowBlog extends Component {
     });
   }
 
-  render(){
-
-    const { blogs, currentUser} = this.props;
-    let answerList = blogs.map(a => (
-      
-      <AnswerList
-
-        _id={a._id}
-        date={a.created}
-        body={a.body}
-        upvote={a.upvote}
-        downvote={a.downvote}
-
-
-
-      />
-       
-    ));
-
+  render() {
     return (
-      <div>
-        <div>
-        {/* blog display */}
-        
-        <Blog
-          _id={blogs._id}
-          title={blogs.title}
-          category={blogs.category}
-          body={blogs.body}
-          />
-        
-          </div>
-        
-        {/* add answer */}
-          <div className="container">
+      <div className="container">
         <form onSubmit={this.onHandleSubmit}>
           <label className="cinput">Add Reply...</label>
           <div className="form-group">
             <ReactQuill
-              modules={ShowBlog.modules}
-              formats={ShowBlog.formats}
+              modules={CommentInput.modules}
+              formats={CommentInput.formats}
               value={this.state.body}
               placeholder="Body"
               onChange={this.onHandleChange}
@@ -107,15 +65,11 @@ class ShowBlog extends Component {
         <br />
         
       </div>
-          {/* answer display */}
-          {answerList}
-    </div>
     );
   }
 }
 
-
-ShowBlog.modules = {
+CommentInput.modules = {
   toolbar: [
     [{ header: '1' }, { header: '2' }, { font: [] }],
     [{ size: [] }],
@@ -127,7 +81,7 @@ ShowBlog.modules = {
   ]
 };
 
-ShowBlog.formats = [
+CommentInput.formats = [
   'header',
   'font',
   'size',
@@ -144,16 +98,10 @@ ShowBlog.formats = [
   'code-block'
 ];
 
-
-
 function mapStateToProps(state) {
   return {
-    blogs:state.blogs,
-  
-    currentUser: state.currentUser.userid
+    errors: state.errors
   };
 }
 
-export default connect(mapStateToProps, {fetchBlogById,postNewComment})(
-  ShowBlog
-);
+export default connect(mapStateToProps, { postNewComment })(CommentInput);

@@ -108,21 +108,13 @@ router.post('/create',function(req, res) {
         });
      });
 
-     router.put('/answer/:id',upload.single('upload_file'), function (req, res) {
+     router.put('/answer/:id', function (req, res) {
 
-       if(!req.file){
-           return res.send({
-           success :false,
-            message:'Error:upload_file can\'t be Blank'
-         });
-       }
-
-       var image = req.file.path;
        var body = req.body.body;
        var user_id = req.body.user_id;
 
      Blog.findByIdAndUpdate(req.params.id,
-          {$push: {answer: { user_id: user_id, body: body, image:image} } },
+          {$push: {answer: { user_id: user_id, body: body} } },
           {new: true}, function (err, answer) {
             if (err) return res.status(500).send("There was a problem updating the blog.");
             res.status(200).send({answer_id: answer._id,blog:req.params.id});

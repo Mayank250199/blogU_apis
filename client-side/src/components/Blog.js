@@ -1,17 +1,15 @@
 import React from "react";
 import Moment from "react-moment";
-import { Link } from "react-router-dom";
 import renderHTML from 'react-render-html';
 import '../style/Home.css';
 
 
-const BlogItem = ({
+const Blog = ({
   date,
   title,
   category,
   _id,
   body,
-  answer,
   removeMessage,
   isCorrectUser
   
@@ -24,7 +22,7 @@ const BlogItem = ({
       <div className="blog-area">
   
        
-        <Link to={`/blog/${_id}`}><h1>{title}</h1></Link>
+        <h1>hii{title}</h1>
         <span className="text-muted">
           <Moment className="text-muted" format="Do MMM YYYY">
             {date}
@@ -33,9 +31,6 @@ const BlogItem = ({
         <p>by-{}</p>
         
         <p className="cate">{category}</p>
-        <p>{renderHTML(body)}</p>
-        <h3>Top Reply..</h3>
-        <p>{renderHTML(answer)}</p>
         {isCorrectUser && (
           <a className="btn btn-danger" onClick={removeMessage}>
             Delete
@@ -47,4 +42,4 @@ const BlogItem = ({
   );
 
 
-export default BlogItem;
+export default Blog;
