@@ -5,20 +5,20 @@ import { fetchUserId } from "../store/actions/users";
 import ProfileMain from "./ProfileMain.js";
 
 class profile extends Component {
-  
-render(){
-  const {currentUser } = this.props;
-    console.log(currentUser);
+  componentDidMount(){
     
-   var hii = this.props.fetchUserId(currentUser);
-         
-   
-
-   return (
+  const {currentUser} = this.props;
+      this.props.fetchUserId(this.props.currentUser);
+  }
+render(){
+  const {users} = this.props;
+  return (
      
     <div>
-     
-        
+      
+        <ProfileMain
+        username = {users.username}
+        />
      
     </div>
   );
@@ -28,6 +28,7 @@ render(){
 function mapStateToProps(state) {
     return {
       currentUser: state.currentUser.user.id,
+      users:state.users
       
     };
   }

@@ -53,7 +53,6 @@ class BlogList extends Component {
 function mapStateToProps(state) {
   return {
     blogs: state.blogs,
-    data: state.data,
     currentUser: state.currentUser.userid
   };
 }

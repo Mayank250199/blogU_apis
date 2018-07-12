@@ -34,17 +34,7 @@ export const fetchBlogs = () => {
       });
   };
 };
-export const fetchBlogById = id => {
-  return dispatch => {
-    return apiCall("GET", `/api/blog/${id}`)
-      .then(res => {
-        dispatch(loadBlogs(res));
-      })
-      .catch(err => {
-        dispatch(addError());
-      });
-  };
-};
+
 
 export const postNewBlog = text => (dispatch, getState) => {
   let { currentUser } = getState();

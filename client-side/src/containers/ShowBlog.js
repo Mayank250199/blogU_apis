@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {fetchBlogById} from "../store/actions/blogs";
+import {fetchBlogById} from "../store/actions/blogshow";
 import Blog from "../components/Blog";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -57,8 +57,17 @@ class ShowBlog extends Component {
 
   render(){
 
-    const { blogs, currentUser} = this.props;
-    let answerList = blogs.map(a => (
+    const { blogs, currentUser,blogshow} = this.props;
+     function Blog (){
+      <Blog
+      _id={blogshow._id}
+      title={blogshow.title}
+      category={blogshow.category}
+      body={blogshow.body}
+      />
+     }   
+ 
+    let answerList = blogshow.map(a => (
       
       <AnswerList
 
@@ -78,14 +87,9 @@ class ShowBlog extends Component {
       <div>
         <div>
         {/* blog display */}
+        {Blog}
         
-        <Blog
-          _id={blogs._id}
-          title={blogs.title}
-          category={blogs.category}
-          body={blogs.body}
-          />
-        
+                
           </div>
         
         {/* add answer */}
@@ -109,6 +113,7 @@ class ShowBlog extends Component {
       </div>
           {/* answer display */}
           {answerList}
+         
     </div>
     );
   }
@@ -149,7 +154,7 @@ ShowBlog.formats = [
 function mapStateToProps(state) {
   return {
     blogs:state.blogs,
-  
+    blogshow:state.blogshow,
     currentUser: state.currentUser.userid
   };
 }

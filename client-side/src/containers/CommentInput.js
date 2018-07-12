@@ -8,9 +8,7 @@ import "../style/comment.css";
 
 
 class CommentInput extends Component {
-    componentDidMount() {
-        const id = this.props.params.id;
-             }
+    
   constructor(props) {
     
     super(props);

@@ -23,6 +23,10 @@ const Main = props => {
           render={props => <Homepage currentUser={currentUser} {...props} />}
         />
         <Route
+          path="/blog/create"
+          component={withAuth(BlogForm)}
+        />
+        <Route
           exact
           path="/blog/:id"
           render={props => <ShowBlog currentUser={currentUser} {...props} />}
@@ -60,10 +64,7 @@ const Main = props => {
             );
           }}
         />
-        <Route
-          path="/blog/create"
-          component={withAuth(BlogForm)}
-        />
+        
         <Route
           path="/profile"
           component={withAuth(profile)}
