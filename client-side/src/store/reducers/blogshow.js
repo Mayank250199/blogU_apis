@@ -1,9 +1,14 @@
 import { LOAD_BLOGSHOW } from "../actionTypes";
 
-const blogshow = (state = [], action) => {
+const initialState = {
+  blogshow:false
+  
+};
+
+const blogshow = (state = initialState , action) => {
   switch (action.type) {
     case LOAD_BLOGSHOW:
-      return [...action.blogshow];
+      return { ...action.blogshow, blogshow: true };
       default:
       return state;
   }

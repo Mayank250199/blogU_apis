@@ -57,38 +57,21 @@ class ShowBlog extends Component {
 
   render(){
 
-    const { blogs, currentUser,blogshow} = this.props;
-     function Blog (){
-      <Blog
-      _id={blogshow._id}
-      title={blogshow.title}
-      category={blogshow.category}
-      body={blogshow.body}
-      />
-     }   
- 
-    let answerList = blogshow.map(a => (
+    const { blogs, currentUser,blogshow, answer} = this.props;
       
-      <AnswerList
-
-        _id={a._id}
-        date={a.created}
-        body={a.body}
-        upvote={a.upvote}
-        downvote={a.downvote}
-
-
-
-      />
-       
-    ));
+ 
+   
 
     return (
       <div>
         <div>
         {/* blog display */}
-        {Blog}
-        
+        <Blog
+      _id={blogshow._id}
+      title={blogshow.title}
+      category={blogshow.category}
+      body={blogshow.body}
+      />
                 
           </div>
         
@@ -112,7 +95,7 @@ class ShowBlog extends Component {
         
       </div>
           {/* answer display */}
-          {answerList}
+          
          
     </div>
     );
@@ -153,8 +136,8 @@ ShowBlog.formats = [
 
 function mapStateToProps(state) {
   return {
-    blogs:state.blogs,
     blogshow:state.blogshow,
+    answer:state.blogshow.answer,
     currentUser: state.currentUser.userid
   };
 }

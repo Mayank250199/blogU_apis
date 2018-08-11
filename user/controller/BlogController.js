@@ -85,6 +85,7 @@ router.post('/create',function(req, res) {
             res.status(200).send(blogs);
         });
     });
+    
     // RETURNS  THE blog by id IN THE DATABASE
     router.get('/:id',function (req, res) {
         Blog.findById(req.params.id, function (err, blogs) {

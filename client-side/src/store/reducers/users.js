@@ -1,9 +1,14 @@
 import { LOAD_USERS } from "../actionTypes";
 
-const users = (state = [], action) => {
+const initialState = {
+  users:false
+  
+};
+
+const users = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_USERS:
-      return [...action.users];
+      return {...action.users , users :true };
     default:
       return state;
   }

@@ -29,7 +29,7 @@ const Main = props => {
         <Route
           exact
           path="/blog/:id"
-          render={props => <ShowBlog currentUser={currentUser} {...props} />}
+          render={props => <ShowBlog currentUser={currentUser}  {...props} />}
         />
         <Route
           exact
@@ -77,6 +77,7 @@ const Main = props => {
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
+  
     errors: state.errors
   };
 }
